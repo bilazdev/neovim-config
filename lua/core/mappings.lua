@@ -25,13 +25,14 @@ M.general = {
 
     -- save
     ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
+    ["<leader>s"] = { "<cmd> w <CR>", "Save file" },
 
     -- Copy all
     ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
 
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
-    ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+    -- ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
 
     -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
     -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -158,7 +159,7 @@ M.lspconfig = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["<leader>."] = {
       function()
         vim.lsp.buf.signature_help()
       end,
@@ -172,7 +173,7 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>r"] = {
       function()
         require("nvchad.renamer").open()
       end,
@@ -186,14 +187,14 @@ M.lspconfig = {
       "LSP code action",
     },
 
-    ["gr"] = {
+    ["<leader><C-]>"] = {
       function()
         vim.lsp.buf.references()
       end,
       "LSP references",
     },
 
-    ["<leader>lf"] = {
+    ["<leader><leader>"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -270,8 +271,8 @@ M.telescope = {
 
   n = {
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
+    ["<leader>p"] = { "<cmd> Telescope find_files <CR>", "Find files" },
+    ["<leader>ff"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
@@ -279,11 +280,8 @@ M.telescope = {
     ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
 
     -- git
-    ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
-    ["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "Git status" },
-
-    -- pick a hidden term
-    ["<leader>pt"] = { "<cmd> Telescope terms <CR>", "Pick hidden term" },
+    ["<leader>gc"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
+    ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "Git status" },
 
     -- theme switcher
     ["<leader>th"] = { "<cmd> Telescope themes <CR>", "Nvchad themes" },
@@ -435,19 +433,19 @@ M.gitsigns = {
     },
 
     -- Actions
-    ["<leader>rh"] = {
-      function()
-        require("gitsigns").reset_hunk()
-      end,
-      "Reset hunk",
-    },
+    -- ["<leader>rh"] = {
+    --   function()
+    --     require("gitsigns").reset_hunk()
+    --   end,
+    --   "Reset hunk",
+    -- },
 
-    ["<leader>ph"] = {
-      function()
-        require("gitsigns").preview_hunk()
-      end,
-      "Preview hunk",
-    },
+    -- ["<leader>ph"] = {
+    --   function()
+    --     require("gitsigns").preview_hunk()
+    --   end,
+    --   "Preview hunk",
+    -- },
 
     ["<leader>gb"] = {
       function()
@@ -463,6 +461,21 @@ M.gitsigns = {
       "Toggle deleted",
     },
   },
+}
+
+M.folds = {
+  n = {
+    ["<leader>-"] = { "<cmd> foldclose <CR>", "Fold close" },
+    ["<leader>="] = { "<cmd> foldopen <CR>", "Fold open" },
+    ["+"] = { "<cmd> set foldlevel=999 <CR>", "Unfold all" },
+    ["_"] = { "<cmd> set foldlevel=0 <CR>", "Fold all" } 
+  },
+  v = {
+    ["<leader>-"] = { "<cmd> foldclose <CR>", "Fold close" },
+    ["<leader>="] = { "<cmd> foldopen <CR>", "Fold open" },
+    ["+"] = { "<cmd> set foldlevel=999 <CR>", "Unfold all" },
+    ["_"] = { "<cmd> set foldlevel=0 <CR>", "Fold all" } 
+  }
 }
 
 return M

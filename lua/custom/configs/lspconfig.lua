@@ -20,3 +20,10 @@ lspconfig.tsserver.setup({
     }
   }
 })
+
+lspconfig.omnisharp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = {"cs"},
+    cmd = { "omnisharp", "--languageserver"}
+}

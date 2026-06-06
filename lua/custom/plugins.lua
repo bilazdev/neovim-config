@@ -1,11 +1,11 @@
 local plugins = {
-    -- {
-    -- "mhartington/formatter.nvim",
-    --   event = "VeryLazy",
-    --   opts = function()
-    --     return require "custom.configs.formatter"
-    --   end
-    -- },
+    {
+    "mhartington/formatter.nvim",
+      event = "VeryLazy",
+      opts = function()
+        return require "custom.configs.formatter"
+      end
+    },
     -- {
     --   "mfussenegger/nvim-lint",
     --   event = "VeryLazy",
@@ -15,6 +15,16 @@ local plugins = {
     -- },
     {
         "nvim-neotest/nvim-nio"
+    },
+    {
+        "pappasam/nvim-repl",
+        keys = {
+            { "<Leader>c", "<Plug>(ReplSendCell)",   mode = "n", desc = "Send Repl Cell" },
+            { "<Leader>or", "<cmd>Repl<CR>",   mode = "n", desc = "Open Repl" },
+            { "<Leader>dr", "<cmd>ReplClose<CR>",   mode = "n", desc = "Open Repl" },
+            { "<Leader>'", "<Plug>(ReplSendLine)",   mode = "n", desc = "Send Repl Line" },
+            { "<Leader>'", "<Plug>(ReplSendVisual)", mode = "x", desc = "Send Repl Visual Selection" },
+        }
     },
     {
         "rcarriga/nvim-dap-ui",
